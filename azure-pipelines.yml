@@ -4,17 +4,11 @@
 # https://aka.ms/yaml
 
 trigger:
-  branches: 
-    include:
-     - features/*
-    exclude:
-      - features/*
-  paths:
-    exclude:
-    - README.md
+- master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
+
 
 steps:
 - task: ArchiveFiles@2
@@ -22,3 +16,7 @@ steps:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
 - task: PublishBuildArtifacts@1
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: 
