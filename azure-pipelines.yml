@@ -3,8 +3,20 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+# trigger:
+#   branches: 
+#     include:
+#      - features/*
+#     exclude:
+#       - features/*
+#   paths:
+#     exclude:
+#     - README.md
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**'
+    TargetFolder: 
 
 pool:
   vmImage: ubuntu-latest
